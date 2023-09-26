@@ -1,8 +1,8 @@
 import React from "react";
 import StyledForm from "./Form.styled";
 
-const Form = ({ children }) => {
-    return <StyledForm>{children}</StyledForm>;
+const Form = ({ children, onSubmit }) => {
+    return <StyledForm onSubmit={onSubmit}>{children}</StyledForm>;
 };
 
 export default Form;

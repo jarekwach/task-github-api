@@ -3,7 +3,8 @@ import GithubAPI from "../GithubAPI";
 import UserInfo from "./UserInfo";
 import UserRepo from "./UserRepo";
 import UserRepoDetails from "./UserRepoDetails";
-import Alert from "./Alert/Alert";
+import Alert from "./Alert";
+import Form from "./Form";
 
 const token = process.env.REACT_APP_API_KEY;
 const gh = new GithubAPI(token);
@@ -28,7 +29,7 @@ const GithubApp = () => {
                 .catch((err) => console.log(err));
         } else {
             setShowAlert(true);
-            setAlertMsg("Enter Username");
+            setAlertMsg("Please enter username");
         }
     };
 
@@ -58,7 +59,7 @@ const GithubApp = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}>
                 <label>GitHub user</label>
                 <input
                     type="text"
@@ -67,7 +68,7 @@ const GithubApp = () => {
                     onChange={handleChange}
                 />
                 <input type="submit" />
-            </form>
+            </Form>
 
             {userInfo !== "" ? (
                 <UserInfo data={userInfo} onClick={getUserRepositories} />
