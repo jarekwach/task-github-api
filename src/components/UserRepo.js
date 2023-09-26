@@ -1,11 +1,12 @@
 import React from "react";
 
-const UserRepo = ({ repoList }) => {
+const UserRepo = ({ repoList, onClick }) => {
     return (
         <ul>
-            {repoList.map((item) => (
-                <li key={item.id}>
-                    <a href={item.html_url}>{item.name}</a>
+            {repoList.map((repo) => (
+                <li key={repo.id}>
+                    <a href={repo.html_url}>{repo.name}</a>
+                    <button onClick={onClick}>details</button>
                 </li>
             ))}
         </ul>

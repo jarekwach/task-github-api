@@ -39,6 +39,10 @@ const GithubApp = () => {
         }
     };
 
+    const getRepoDetails = () => {
+        console.log("wyswielic dane repo");
+    };
+
     return (
         <>
             <form onSubmit={handleSubmit}>
@@ -56,7 +60,7 @@ const GithubApp = () => {
                 <UserInfo data={userInfo} onClick={getUserRepositories} />
             ) : null}
 
-            <UserRepo repoList={repositories} />
+            <UserRepo repoList={repositories} onClick={getRepoDetails} />
         </>
     );
 };
