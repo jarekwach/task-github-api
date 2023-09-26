@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import GithubAPI from "../GithubAPI";
 import UserInfo from "./UserInfo";
 import UserRepo from "./UserRepo";
+import UserRepoDetails from "./UserRepoDetails";
 
 const token = process.env.REACT_APP_API_KEY;
 const gh = new GithubAPI(token);
@@ -10,6 +11,7 @@ const GithubApp = () => {
     const [username, setUsername] = useState("");
     const [userInfo, setUserInfo] = useState("");
     const [repositories, setRepositories] = useState([]);
+    const [currentRepo, setCurrentRepo] = useState([]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -39,8 +41,14 @@ const GithubApp = () => {
         }
     };
 
-    const getRepoDetails = () => {
-        console.log("wyswielic dane repo");
+    const getRepoDetails = (e) => {
+        const selectedRepoId = e.target.id;
+
+        const filteredRepo = repositories.filter((repo) => {
+            return repo.id === parseInt(selectedRepoId);
+        });
+
+        setCurrentRepo(...filteredRepo);
     };
 
     return (
@@ -61,6 +69,7 @@ const GithubApp = () => {
             ) : null}
 
             <UserRepo repoList={repositories} onClick={getRepoDetails} />
+            <UserRepoDetails data={currentRepo} />
         </>
     );
 };

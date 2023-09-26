@@ -5,8 +5,10 @@ const UserRepo = ({ repoList, onClick }) => {
         <ul>
             {repoList.map((repo) => (
                 <li key={repo.id}>
-                    <a href={repo.html_url}>{repo.name}</a>
-                    <button onClick={onClick}>details</button>
+                    <p>{repo.name}</p>
+                    <button onClick={onClick} id={repo.id}>
+                        details
+                    </button>
                 </li>
             ))}
         </ul>
