@@ -1,16 +1,20 @@
-import React from "react";
-import GitHubApp from "./components/GitHubApp";
-import ResetStyle from "./styled/ResetStyle";
-import GlobalStyle from "./styled/GlobalStyle";
+import React from 'react';
+import {
+	HashRouter as Router,
+	Route,
+} from 'react-router-dom/cjs/react-router-dom.min';
+
+import './index.css';
+import GitHubApp from './components/GitHubApp';
 
 function App() {
-    return (
-        <>
-            <ResetStyle />
-            <GlobalStyle />
-            <GitHubApp />
-        </>
-    );
+	return (
+		<Router>
+			<Route path='/'>
+				<GitHubApp />
+			</Route>
+		</Router>
+	);
 }
 
 export default App;

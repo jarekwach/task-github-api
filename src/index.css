@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+:root {
+	--color-white: rgb(245, 245, 245);
+	--color-hover: rgb(214, 104, 97);
+	--color-dark: rgb(51, 51, 51);
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1200px;
+}
+
+/* header */
+.header {
+	height: 60vh;
+	color: var(--color-white);
+	background-image: url('../src/img/hero-bg.png');
+	background-position: top;
+	background-size: cover;
+}
+
+.header__container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.header__content {
+	margin: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 160px;
+	justify-content: space-evenly;
+}
+
+.header__title {
+	font-size: 40px;
+	font-weight: 300;
+}
+
+.header__name {
+	font-size: 48px;
+	font-weight: bold;
+}
+
+.header__info {
+	font-size: 36px;
+	color: var(--color-dark);
+	text-shadow: 0 0 7px var(--color-white);
+}
+
+.header__ico {
+	margin: 50px;
+	font-size: 200px;
+}
+
+/* find-user section */
+.find-user__container {
+	min-height: 40vh;
+}
+
+.find-user__form {
+	margin-top: 20px;
+}
+
+.find-user__card {
+	display: flex;
+}
+
+.user__item {
+	position: relative;
+	margin: 20px;
+	padding: 20px;
+	background-color: #485461;
+	background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+	color: var(--color-white);
+	border-radius: 8px;
+	box-shadow: 0 0 15px black;
+	min-width: 280px;
+	max-height: 550px;
+}
+
+.user__header {
+	display: flex;
+	flex-direction: column;
+}
+
+.user__name {
+	text-align: center;
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+}
+
+.user__close-btn {
+	cursor: pointer;
+}
+
+.user__close-btn:hover > .user__close-ico {
+	transform: scale(1.2);
+	color: var(--color-hover);
+}
+
+.user__close-ico {
+	padding: 20px;
+	position: absolute;
+	transition: all 0.3s;
+	top: 0;
+	right: 0;
+}
+
+.user__avatar {
+	width: 200px;
+	margin: 0 auto;
+	margin-bottom: 24px;
+	border-radius: 50%;
+}
+
+.user__details {
+	display: flex;
+	flex-direction: column;
+	list-style: none;
+	padding-left: 0;
+}
+
+.user__details > li {
+	font-size: 14px;
+	line-height: 24px;
+}
+
+.user__link {
+	color: var(--color-white);
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.user__ico {
+	margin-left: 5px;
+	font-size: 20px;
+	transition: transform 0.7s;
+}
+
+.user__link:hover > .user__ico {
+	transform: rotateY(180deg);
+}
+
+.user__btn {
+	border: none;
+	border-radius: 8px;
+	margin: 0 auto;
+	padding: 8px 20px;
+	cursor: pointer;
+	margin-top: 20px;
+	box-shadow: 0 0 10px black;
+	transition: all 0.3s;
+}
+
+.user__btn:hover {
+	color: var(--color-white);
+	background-color: var(--color-hover);
+}
+
+/* repositories */
+.repositories__list {
+	position: relative;
+	margin: 20px;
+	padding: 20px;
+	background-color: #485461;
+	background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+	border-radius: 8px;
+	box-shadow: 0 0 15px black;
+	list-style: none;
+}
+
+.repositories__item {
+	margin-bottom: 5px;
+}
+
+.repositories__name {
+	color: var(--color-white);
+	margin-right: 10px;
+}
+
+.repositories__btn {
+	padding: 3px 6px;
+	margin-right: 8px;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.3s;
+	border: none;
+}
+
+.repositories__btn:hover {
+	color: var(--color-white);
+	background-color: var(--color-hover);
+}
+
+/* footer */
+.footer {
+	display: flex;
+	align-items: center;
+	height: 60px;
+	color: var(--color-white);
+	background-color: var(--color-dark);
+}
+
+.footer__ico {
+	font-size: 18px;
+	margin: 7px;
+	color: var(--color-white);
+	transition: color 0.3s;
+}
+
+.footer__ico:hover {
+	color: var(--color-hover);
+}

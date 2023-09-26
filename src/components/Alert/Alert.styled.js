@@ -1,18 +1,23 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledAlert = styled.div`
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid black;
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border-radius: 25px;
+	padding: 20px;
+	background-color: white;
 `;
 
 const StyledAlertMessage = styled.p`
-    font-size: 20px;
+	margin-bottom: 2rem;
+	padding: 30px;
+	text-align: center;
 `;
 
 export { StyledAlert, StyledAlertMessage };
