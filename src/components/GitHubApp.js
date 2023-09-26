@@ -3,6 +3,7 @@ import GithubAPI from "../GithubAPI";
 import UserInfo from "./UserInfo";
 import UserRepo from "./UserRepo";
 import UserRepoDetails from "./UserRepoDetails";
+import Alert from "./Alert/Alert";
 
 const token = process.env.REACT_APP_API_KEY;
 const gh = new GithubAPI(token);
@@ -12,6 +13,8 @@ const GithubApp = () => {
     const [userInfo, setUserInfo] = useState("");
     const [repositories, setRepositories] = useState([]);
     const [currentRepo, setCurrentRepo] = useState([]);
+    const [showAlert, setShowAlert] = useState(false);
+    const [alertMsg, setAlertMsg] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,10 +23,12 @@ const GithubApp = () => {
             gh.getUserInfo(username)
                 .then((resp) => {
                     setUserInfo(resp);
+                    setUsername("");
                 })
                 .catch((err) => console.log(err));
         } else {
-            console.log("wyswietlic blad");
+            setShowAlert(true);
+            setAlertMsg("Enter Username");
         }
     };
 
@@ -33,9 +38,9 @@ const GithubApp = () => {
 
     const getUserRepositories = () => {
         if (userInfo.login) {
-            gh.getUserRepositories(userInfo.login).then((resp) =>
-                setRepositories(resp)
-            );
+            gh.getUserRepositories(userInfo.login)
+                .then((resp) => setRepositories(resp))
+                .catch((err) => console.log(err));
         } else {
             console.log("wyswietlic blad");
         }
@@ -70,6 +75,15 @@ const GithubApp = () => {
 
             <UserRepo repoList={repositories} onClick={getRepoDetails} />
             <UserRepoDetails data={currentRepo} />
+            {showAlert && (
+                <Alert
+                    message={alertMsg}
+                    onClick={() => {
+                        setShowAlert(false);
+                        setAlertMsg("");
+                    }}
+                />
+            )}
         </>
     );
 };
