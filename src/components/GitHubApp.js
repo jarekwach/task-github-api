@@ -16,6 +16,10 @@ const GithubApp = () => {
 	const [currentRepo, setCurrentRepo] = useState([]);
 	const [showAlert, setShowAlert] = useState(false);
 	const [alertMsg, setAlertMsg] = useState('');
+	const [formData, setFormData] = useState({
+		username: '',
+		searchQuery: '',
+	});
 
 	const handleInputChange = (e) => {
 		const name = e.target.name;
@@ -23,11 +27,6 @@ const GithubApp = () => {
 
 		setFormData({ ...formData, [name]: value });
 	};
-
-	const [formData, setFormData] = useState({
-		username: '',
-		searchQuery: '',
-	});
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -38,7 +37,10 @@ const GithubApp = () => {
 					setUserInfo(resp);
 					setFormData({ ...formData, username: '' });
 				})
-				.catch((err) => console.log(err));
+				.catch(() => {
+					setShowAlert(true);
+					setAlertMsg('User not found');
+				});
 		} else {
 			setShowAlert(true);
 			setAlertMsg('Please enter username');
@@ -48,10 +50,17 @@ const GithubApp = () => {
 	const getUserRepositories = () => {
 		if (userInfo.login) {
 			gh.getUserRepositories(userInfo.login)
-				.then((resp) => setRepositories(resp))
-				.catch((err) => console.log(err));
-		} else {
-			console.log('wyswietlic blad');
+				.then((resp) => {
+					if (resp.length === 0) {
+						setAlertMsg('user nie ma repo');
+						setShowAlert(true);
+					}
+					setRepositories(resp);
+				})
+				.catch((err) => {
+					setAlertMsg(`Error: ${err.status}`);
+					setShowAlert(true);
+				});
 		}
 	};
 
@@ -64,7 +73,7 @@ const GithubApp = () => {
 
 		setCurrentRepo(...filteredRepo);
 	};
-	console.log(formData);
+
 	return (
 		<>
 			<Header />
