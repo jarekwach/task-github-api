@@ -11,6 +11,7 @@ import GitHubApp from './components/GitHubApp';
 import FindSection from './components/FindSection';
 import NotFound from './components/NotFound';
 import Header from './components/Header';
+import UserCard from './components/UserCard';
 
 function App() {
 	return (
@@ -22,6 +23,17 @@ function App() {
 					<GitHubApp>
 						<FindSection />
 					</GitHubApp>
+				</Route>
+
+				<Route
+					exact
+					path='/user/:username'>
+					<GitHubApp />
+				</Route>
+				<Route
+					exact
+					path='/user/:username/repos'>
+					<GitHubApp />
 				</Route>
 
 				<Route

@@ -1,4 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import {
+	Redirect,
+	Route,
+	useHistory,
+	useParams,
+} from 'react-router-dom/cjs/react-router-dom.min';
 import GithubAPI from '../GithubAPI';
 import UserInfo from './UserCard';
 import UserRepo from './UserRepo';
@@ -22,6 +28,22 @@ const GithubApp = () => {
 		username: '',
 		searchQuery: '',
 	});
+	const { username } = useParams();
+	const history = useHistory();
+
+	useEffect(() => {
+		if (username !== undefined) {
+			gh.getUserInfo(username)
+				.then((resp) => {
+					setUserInfo(resp);
+					setFormData({ ...formData, username: '' });
+				})
+				.catch(() => {
+					setShowAlert(true);
+					setAlertMsg('User not found');
+				});
+		}
+	}, [username]);
 
 	const handleInputChange = (e) => {
 		const name = e.target.name;
@@ -34,15 +56,16 @@ const GithubApp = () => {
 		e.preventDefault();
 
 		if (formData.username !== '') {
-			gh.getUserInfo(formData.username)
-				.then((resp) => {
-					setUserInfo(resp);
-					setFormData({ ...formData, username: '' });
-				})
-				.catch(() => {
-					setShowAlert(true);
-					setAlertMsg('User not found');
-				});
+			// gh.getUserInfo(formData.username)
+			// 	.then((resp) => {
+			// 		setUserInfo(resp);
+			// 		setFormData({ ...formData, username: '' });
+			// 	})
+			// 	.catch(() => {
+			// 		setShowAlert(true);
+			// 		setAlertMsg('User not found');
+			// 	});
+			history.push(`/user/${formData.username}`);
 		} else {
 			setShowAlert(true);
 			setAlertMsg('Please enter username');
@@ -81,7 +104,7 @@ const GithubApp = () => {
 			<Header />
 
 			<FindSection>
-
+				
 				<Form onSubmit={handleSubmit}>
 					<label>Check user details:</label>
 					<input
