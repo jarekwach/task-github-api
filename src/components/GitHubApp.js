@@ -11,31 +11,38 @@ const token = process.env.REACT_APP_API_KEY;
 const gh = new GithubAPI(token);
 
 const GithubApp = () => {
-	const [username, setUsername] = useState('');
 	const [userInfo, setUserInfo] = useState('');
 	const [repositories, setRepositories] = useState([]);
 	const [currentRepo, setCurrentRepo] = useState([]);
 	const [showAlert, setShowAlert] = useState(false);
 	const [alertMsg, setAlertMsg] = useState('');
 
+	const handleInputChange = (e) => {
+		const name = e.target.name;
+		const value = e.target.value;
+
+		setFormData({ ...formData, [name]: value });
+	};
+
+	const [formData, setFormData] = useState({
+		username: '',
+		searchQuery: '',
+	});
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		if (username !== '') {
-			gh.getUserInfo(username)
+		if (formData.username !== '') {
+			gh.getUserInfo(formData.username)
 				.then((resp) => {
 					setUserInfo(resp);
-					setUsername('');
+					setFormData({ ...formData, username: '' });
 				})
 				.catch((err) => console.log(err));
 		} else {
 			setShowAlert(true);
 			setAlertMsg('Please enter username');
 		}
-	};
-
-	const handleChange = (e) => {
-		setUsername(e.target.value);
 	};
 
 	const getUserRepositories = () => {
@@ -57,7 +64,7 @@ const GithubApp = () => {
 
 		setCurrentRepo(...filteredRepo);
 	};
-
+	console.log(formData);
 	return (
 		<>
 			<Header />
@@ -70,9 +77,9 @@ const GithubApp = () => {
 						<label>Check user details:</label>
 						<input
 							type='text'
-							value={username}
+							value={formData.username}
 							name='username'
-							onChange={handleChange}
+							onChange={handleInputChange}
 						/>
 						<input
 							type='submit'
@@ -92,6 +99,8 @@ const GithubApp = () => {
 							<UserRepo
 								repoList={repositories}
 								onClick={getRepoDetails}
+								onChange={handleInputChange}
+								inpValue={formData.searchQuery}
 							/>
 						) : null}
 
