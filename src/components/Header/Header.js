@@ -1,4 +1,6 @@
 import React from 'react';
+import './Header.css';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 

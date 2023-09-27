@@ -21,52 +21,6 @@ body {
 	max-width: 1200px;
 }
 
-/* header */
-.header {
-	height: 60vh;
-	color: var(--color-white);
-	background-image: url('../src/img/hero-bg.png');
-	background-position: top;
-	background-size: cover;
-}
-
-.header__container {
-	height: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-
-.header__content {
-	margin: 50px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	height: 160px;
-	justify-content: space-evenly;
-}
-
-.header__title {
-	font-size: 40px;
-	font-weight: 300;
-}
-
-.header__name {
-	font-size: 48px;
-	font-weight: bold;
-}
-
-.header__info {
-	font-size: 36px;
-	color: var(--color-dark);
-	text-shadow: 0 0 7px var(--color-white);
-}
-
-.header__ico {
-	margin: 50px;
-	font-size: 200px;
-}
-
 /* find-user section */
 .find-user__container {
 	min-height: 40vh;
@@ -182,6 +136,10 @@ body {
 	border-radius: 8px;
 	box-shadow: 0 0 15px black;
 	list-style: none;
+}
+
+.repositories__form {
+	text-align: center;
 }
 
 .repositories__item {
