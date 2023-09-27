@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/task-github-api/static/css/main.6cbc6139.css",
+    "main.js": "/task-github-api/static/js/main.8698c9c0.js",
+    "static/media/hero-bg.png": "/task-github-api/static/media/hero-bg.2f4dd283237afe4e59f7.png",
+    "index.html": "/task-github-api/index.html",
+    "main.6cbc6139.css.map": "/task-github-api/static/css/main.6cbc6139.css.map",
+    "main.8698c9c0.js.map": "/task-github-api/static/js/main.8698c9c0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6cbc6139.css",
+    "static/js/main.8698c9c0.js"
+  ]
+}
