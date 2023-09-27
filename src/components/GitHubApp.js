@@ -22,8 +22,9 @@ const GithubApp = () => {
 	// const [userInfo, setUserInfo] = useState('');
 	const [repositories, setRepositories] = useState([]);
 	const [currentRepo, setCurrentRepo] = useState([]);
-	const [showAlert, setShowAlert] = useState(false);
-	const [alertMsg, setAlertMsg] = useState('');
+	const [error, setError] = useState('');
+	// const [showAlert, setShowAlert] = useState(false);
+	// const [alertMsg, setAlertMsg] = useState('');
 	const [formData, setFormData] = useState({
 		username: '',
 		searchQuery: '',
@@ -53,40 +54,38 @@ const GithubApp = () => {
 		setFormData({ ...formData, [name]: value });
 	};
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
+	// const handleSubmit = (e) => {
+	// 	e.preventDefault();
 
-		if (formData.username !== '') {
-			// gh.getUserInfo(formData.username)
-			// 	.then((resp) => {
-			// 		setUserInfo(resp);
-			// 		setFormData({ ...formData, username: '' });
-			// 	})
-			// 	.catch(() => {
-			// 		setShowAlert(true);
-			// 		setAlertMsg('User not found');
-			// 	});
+	// 	if (formData.username !== '') {
+	// 		// gh.getUserInfo(formData.username)
+	// 		// 	.then((resp) => {
+	// 		// 		setUserInfo(resp);
+	// 		// 		setFormData({ ...formData, username: '' });
+	// 		// 	})
+	// 		// 	.catch(() => {
+	// 		// 		setShowAlert(true);
+	// 		// 		setAlertMsg('User not found');
+	// 		// 	});
 
-			navigate(`/user/${formData.username}`);
-		} else {
-			setShowAlert(true);
-			setAlertMsg('Please enter username');
-		}
-	};
+	// 		navigate(`/user/${formData.username}`);
+	// 	} else {
+	// 		setShowAlert(true);
+	// 		setAlertMsg('Please enter username');
+	// 	}
+	// };
 
 	const getUserRepositories = () => {
 		if (userInfo.login) {
 			gh.getUserRepositories(userInfo.login)
 				.then((resp) => {
 					if (resp.length === 0) {
-						setAlertMsg('Public repository not found');
-						setShowAlert(true);
+						setError('Public repository not found');
 					}
 					setRepositories(resp);
 				})
 				.catch((err) => {
-					setAlertMsg(`Error: ${err.status}`);
-					setShowAlert(true);
+					setError(`Error: ${err.status}`);
 				});
 		}
 	};
@@ -104,21 +103,8 @@ const GithubApp = () => {
 	return (
 		<>
 			<Header />
-
 			<FindSection>
-				<Form onSubmit={handleSubmit}>
-					<label>Check user details:</label>
-					<input
-						type='text'
-						value={formData.username}
-						name='username'
-						onChange={handleInputChange}
-					/>
-					<input
-						type='submit'
-						value={'send'}
-					/>
-				</Form>
+				<Form />
 
 				<div className='find-user__card user'>
 					{userInfo !== '' ? (
@@ -145,13 +131,10 @@ const GithubApp = () => {
 				<Outlet />
 			</FindSection>
 
-			{showAlert && (
+			{error && (
 				<Alert
-					message={alertMsg}
-					onClick={() => {
-						setShowAlert(false);
-						setAlertMsg('');
-					}}
+					message={error}
+					onClick={() => setError('')}
 				/>
 			)}
 
