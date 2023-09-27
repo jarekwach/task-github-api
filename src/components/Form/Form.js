@@ -21,10 +21,11 @@ const Form = () => {
 	return (
 		<>
 			<form
-				className='find-user__form'
+				className='find-user__form form'
 				onSubmit={handleSubmit}>
-				<label>Check user details:</label>
+				<label className='form__label'>Check user details:</label>
 				<input
+					className='form__input'
 					type='text'
 					value={inpValue}
 					name='username'
@@ -34,6 +35,7 @@ const Form = () => {
 					}}
 				/>
 				<input
+					className='form__input form__input--submit'
 					type='submit'
 					value={'send'}
 				/>
