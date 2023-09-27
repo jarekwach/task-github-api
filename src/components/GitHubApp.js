@@ -6,6 +6,7 @@ import UserRepoDetails from './UserRepoDetails';
 import Alert from './Alert';
 import Header from './Header';
 import Footer from './Footer';
+import FindSection from './FindSection';
 
 const token = process.env.REACT_APP_API_KEY;
 const gh = new GithubAPI(token);
@@ -78,47 +79,45 @@ const GithubApp = () => {
 		<>
 			<Header />
 
-			<section className='find-user'>
-				<div className='find-user__container container'>
-					<form
-						className='find-user__form'
-						onSubmit={handleSubmit}>
-						<label>Check user details:</label>
-						<input
-							type='text'
-							value={formData.username}
-							name='username'
+			<FindSection>
+				<form
+					className='find-user__form'
+					onSubmit={handleSubmit}>
+					<label>Check user details:</label>
+					<input
+						type='text'
+						value={formData.username}
+						name='username'
+						onChange={handleInputChange}
+					/>
+					<input
+						type='submit'
+						value={'send'}
+					/>
+				</form>
+
+				<div className='find-user__card user'>
+					{userInfo !== '' ? (
+						<UserInfo
+							data={userInfo}
+							onClick={getUserRepositories}
+						/>
+					) : null}
+
+					{repositories.length !== 0 ? (
+						<UserRepo
+							repoList={repositories}
+							onClick={getRepoDetails}
 							onChange={handleInputChange}
+							inpValue={formData.searchQuery}
 						/>
-						<input
-							type='submit'
-							value={'send'}
-						/>
-					</form>
+					) : null}
 
-					<div className='find-user__card user'>
-						{userInfo !== '' ? (
-							<UserInfo
-								data={userInfo}
-								onClick={getUserRepositories}
-							/>
-						) : null}
-
-						{repositories.length !== 0 ? (
-							<UserRepo
-								repoList={repositories}
-								onClick={getRepoDetails}
-								onChange={handleInputChange}
-								inpValue={formData.searchQuery}
-							/>
-						) : null}
-
-						{currentRepo.length !== 0 ? (
-							<UserRepoDetails data={currentRepo} />
-						) : null}
-					</div>
+					{currentRepo.length !== 0 ? (
+						<UserRepoDetails data={currentRepo} />
+					) : null}
 				</div>
-			</section>
+			</FindSection>
 
 			{showAlert && (
 				<Alert

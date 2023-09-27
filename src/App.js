@@ -6,12 +6,15 @@ import {
 
 import './index.css';
 import GitHubApp from './components/GitHubApp';
+import FindSection from './components/FindSection';
 
 function App() {
 	return (
 		<Router>
 			<Route path='/'>
-				<GitHubApp />
+				<GitHubApp>
+					<FindSection />
+				</GitHubApp>
 			</Route>
 		</Router>
 	);

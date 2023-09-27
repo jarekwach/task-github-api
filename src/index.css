@@ -21,11 +21,6 @@ body {
 	max-width: 1200px;
 }
 
-/* find-user section */
-.find-user__container {
-	min-height: 40vh;
-}
-
 .find-user__form {
 	margin-top: 20px;
 }
