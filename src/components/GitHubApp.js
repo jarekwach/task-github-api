@@ -52,7 +52,7 @@ const GithubApp = () => {
 			gh.getUserRepositories(userInfo.login)
 				.then((resp) => {
 					if (resp.length === 0) {
-						setAlertMsg('user nie ma repo');
+						setAlertMsg('Public repository not found');
 						setShowAlert(true);
 					}
 					setRepositories(resp);

@@ -1,13 +1,17 @@
-import React from "react";
-import { StyledAlert, StyledAlertMessage } from "./Alert.styled";
+import React from 'react';
+import './Alert.css';
 
 const Alert = ({ message, onClick }) => {
-    return (
-        <StyledAlert>
-            <button onClick={onClick}>X</button>
-            <StyledAlertMessage>{message}</StyledAlertMessage>
-        </StyledAlert>
-    );
+	return (
+		<div className='alert'>
+			<button
+				className='alert__btn'
+				onClick={onClick}>
+				X
+			</button>
+			<p className='alert__message'>{message}</p>
+		</div>
+	);
 };
 
 export default Alert;
