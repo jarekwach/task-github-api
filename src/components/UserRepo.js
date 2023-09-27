@@ -1,10 +1,14 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+
 const UserRepo = ({ repoList, onClick, inpValue, onChange }) => {
 	const filteredRepoList = repoList.filter(
 		(repo) =>
 			repo.name.toLowerCase().includes(inpValue.toLowerCase()) ||
-			(repo.description && repo.description.includes(inpValue))
+			(repo.description &&
+				repo.description.toLowerCase().includes(inpValue.toLowerCase()))
 	);
 
 	return (
@@ -31,7 +35,14 @@ const UserRepo = ({ repoList, onClick, inpValue, onChange }) => {
 								info
 							</button>{' '}
 							{repo.name}
+							{repo.stargazers_count > 0 ? (
+								<span className='repositories__star'>
+									{' '}
+									<FontAwesomeIcon icon={faStar} /> {repo.stargazers_count}
+								</span>
+							) : null}
 						</p>
+						<p className='repositories__description'>{repo.description}</p>
 					</li>
 				))}
 			</ul>
