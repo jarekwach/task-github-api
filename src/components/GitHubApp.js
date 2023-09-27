@@ -7,6 +7,7 @@ import Alert from './Alert';
 import Header from './Header';
 import Footer from './Footer';
 import FindSection from './FindSection';
+import Form from './Form';
 
 const token = process.env.REACT_APP_API_KEY;
 const gh = new GithubAPI(token);
@@ -80,9 +81,8 @@ const GithubApp = () => {
 			<Header />
 
 			<FindSection>
-				<form
-					className='find-user__form'
-					onSubmit={handleSubmit}>
+
+				<Form onSubmit={handleSubmit}>
 					<label>Check user details:</label>
 					<input
 						type='text'
@@ -94,7 +94,7 @@ const GithubApp = () => {
 						type='submit'
 						value={'send'}
 					/>
-				</form>
+				</Form>
 
 				<div className='find-user__card user'>
 					{userInfo !== '' ? (

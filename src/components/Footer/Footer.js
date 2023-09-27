@@ -12,7 +12,7 @@ const Footer = () => {
 			<div className='footer__container container'>
 				<p className='footer__info'>
 					&copy; <span className='footer__date'>{date.getFullYear()} </span>
-					GitHubApp - <span className='footer__name'>Jarosław Wąchała</span>
+					GitHubApp - <span className='footer__name'>Jaroslaw Wachala</span>
 					<a
 						className='footer__ico'
 						href='mailto:jaroslaw.wachala@gmail.com'>

@@ -1,0 +1,13 @@
+.not-found {
+	margin-top: 50px;
+	text-align: center;
+}
+
+.not-found__title {
+	margin-bottom: 20px;
+}
+
+.not-found__link {
+	text-decoration: none;
+	color: black;
+}
