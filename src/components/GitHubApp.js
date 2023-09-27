@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {
-	Redirect,
-	Route,
-	useHistory,
+	Outlet,
+	useLoaderData,
+	useNavigate,
 	useParams,
-} from 'react-router-dom/cjs/react-router-dom.min';
+} from 'react-router-dom';
 import GithubAPI from '../GithubAPI';
 import UserInfo from './UserCard';
 import UserRepo from './UserRepo';
@@ -19,7 +19,7 @@ const token = process.env.REACT_APP_API_KEY;
 const gh = new GithubAPI(token);
 
 const GithubApp = () => {
-	const [userInfo, setUserInfo] = useState('');
+	// const [userInfo, setUserInfo] = useState('');
 	const [repositories, setRepositories] = useState([]);
 	const [currentRepo, setCurrentRepo] = useState([]);
 	const [showAlert, setShowAlert] = useState(false);
@@ -28,22 +28,23 @@ const GithubApp = () => {
 		username: '',
 		searchQuery: '',
 	});
-	const { username } = useParams();
-	const history = useHistory();
 
-	useEffect(() => {
-		if (username !== undefined) {
-			gh.getUserInfo(username)
-				.then((resp) => {
-					setUserInfo(resp);
-					setFormData({ ...formData, username: '' });
-				})
-				.catch(() => {
-					setShowAlert(true);
-					setAlertMsg('User not found');
-				});
-		}
-	}, [username]);
+	const userInfo = useLoaderData();
+	const navigate = useNavigate();
+
+	// useEffect(() => {
+	// 	if (username !== undefined) {
+	// 		gh.getUserInfo(username)
+	// 			.then((resp) => {
+	// 				setUserInfo(resp);
+	// 				setFormData({ ...formData, username: '' });
+	// 			})
+	// 			.catch(() => {
+	// 				setShowAlert(true);
+	// 				setAlertMsg('User not found');
+	// 			});
+	// 	}
+	// }, [username]);
 
 	const handleInputChange = (e) => {
 		const name = e.target.name;
@@ -65,7 +66,8 @@ const GithubApp = () => {
 			// 		setShowAlert(true);
 			// 		setAlertMsg('User not found');
 			// 	});
-			history.push(`/user/${formData.username}`);
+
+			navigate(`/user/${formData.username}`);
 		} else {
 			setShowAlert(true);
 			setAlertMsg('Please enter username');
@@ -104,7 +106,6 @@ const GithubApp = () => {
 			<Header />
 
 			<FindSection>
-				
 				<Form onSubmit={handleSubmit}>
 					<label>Check user details:</label>
 					<input
@@ -140,6 +141,8 @@ const GithubApp = () => {
 						<UserRepoDetails data={currentRepo} />
 					) : null}
 				</div>
+
+				<Outlet />
 			</FindSection>
 
 			{showAlert && (

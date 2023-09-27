@@ -1,56 +1,42 @@
 import React from 'react';
 import {
-	HashRouter as Router,
 	Route,
-	Redirect,
-	Switch,
-} from 'react-router-dom/cjs/react-router-dom.min';
+	Routes,
+	BrowserRouter,
+	createBrowserRouter,
+	createRoutesFromElements,
+} from 'react-router-dom';
 
 import './index.css';
 import GitHubApp from './components/GitHubApp';
 import FindSection from './components/FindSection';
-import NotFound from './components/NotFound';
-import Header from './components/Header';
-import UserCard from './components/UserCard';
 
-function App() {
-	return (
-		<Router>
-			<Switch>
+import GithubAPI from './GithubAPI';
+const token = process.env.REACT_APP_API_KEY;
+const gh = new GithubAPI(token);
+
+const router = createBrowserRouter(
+	createRoutesFromElements(
+		<>
+			<Route
+				path='/'
+				element={<>Strona glowna</>}
+			/>
+			<Route
+				exact
+				path='/user/:username'
+				element={<GitHubApp />}
+				loader={async ({ request, params }) => {
+					console.log(params);
+					return gh.getUserInfo(params.username);
+				}}>
 				<Route
 					exact
-					path='/'>
-					<GitHubApp>
-						<FindSection />
-					</GitHubApp>
-				</Route>
+					path='repos'
+					element={<>repos</>}></Route>
+			</Route>
+		</>
+	)
+);
 
-				<Route
-					exact
-					path='/user/:username'>
-					<GitHubApp />
-				</Route>
-				<Route
-					exact
-					path='/user/:username/repos'>
-					<GitHubApp />
-				</Route>
-
-				<Route
-					exact
-					path='/404'>
-					<Header />
-					<FindSection>
-						<NotFound />
-					</FindSection>
-				</Route>
-
-				<Route>
-					<Redirect to='/404' />
-				</Route>
-			</Switch>
-		</Router>
-	);
-}
-
-export default App;
+export { router };
