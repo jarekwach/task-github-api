@@ -21,6 +21,8 @@ body {
 	max-width: 1200px;
 }
 
+
+
 .find-user__card {
 	display: flex;
 }
@@ -165,22 +167,3 @@ body {
 	background-color: var(--color-hover);
 }
 
-/* footer */
-.footer {
-	display: flex;
-	align-items: center;
-	height: 60px;
-	color: var(--color-white);
-	background-color: var(--color-dark);
-}
-
-.footer__ico {
-	font-size: 18px;
-	margin: 7px;
-	color: var(--color-white);
-	transition: color 0.3s;
-}
-
-.footer__ico:hover {
-	color: var(--color-hover);
-}
