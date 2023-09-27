@@ -1,6 +1,12 @@
 import React from 'react';
 
 const UserRepo = ({ repoList, onClick, inpValue, onChange }) => {
+	const filteredRepoList = repoList.filter(
+		(repo) =>
+			repo.name.toLowerCase().includes(inpValue.toLowerCase()) ||
+			(repo.description && repo.description.includes(inpValue))
+	);
+
 	return (
 		<div className='user__repositories repositories'>
 			<form className='repositories__form'>
@@ -13,7 +19,7 @@ const UserRepo = ({ repoList, onClick, inpValue, onChange }) => {
 			</form>
 
 			<ul className='repositories__list'>
-				{repoList.map((repo) => (
+				{filteredRepoList.map((repo) => (
 					<li
 						className='repositories__item'
 						key={repo.id}>
