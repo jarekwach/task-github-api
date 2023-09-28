@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-const UserRepo = ({ repoList, onClick, inpValue, onChange }) => {
-	const filteredRepoList = repoList.filter(
+const UserRepo = () => {
+	const [inpValue, setInpValue] = useState('');
+	const repositories = useLoaderData();
+	const navigate = useNavigate();
+
+	const filteredRepoList = repositories.filter(
 		(repo) =>
 			repo.name.toLowerCase().includes(inpValue.toLowerCase()) ||
 			(repo.description &&
@@ -19,7 +24,7 @@ const UserRepo = ({ repoList, onClick, inpValue, onChange }) => {
 					type='text'
 					name='searchQuery'
 					value={inpValue}
-					onChange={onChange}></input>
+					onChange={(e) => setInpValue(e.target.value)}></input>
 			</form>
 
 			<ul className='repositories__list'>
@@ -30,7 +35,7 @@ const UserRepo = ({ repoList, onClick, inpValue, onChange }) => {
 						<p className='repositories__name'>
 							<button
 								className='repositories__btn'
-								onClick={onClick}
+								onClick={(e) => navigate(e.target.id)}
 								id={repo.id}>
 								info
 							</button>{' '}

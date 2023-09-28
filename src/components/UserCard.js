@@ -2,13 +2,15 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
-const UserCard = ({ data, onClick }) => {
+const UserCard = ({ data }) => {
 	const { name, login, email, type, avatar_url, created_at } = data;
+	const navigate = useNavigate();
 
 	return (
 		<div className='user__item'>
-			<a className='user__close-btn'>
+			<a onClick={() => navigate('/')} className='user__close-btn'>
 				<FontAwesomeIcon
 					icon={faX}
 					className='user__close-ico'
@@ -40,7 +42,7 @@ const UserCard = ({ data, onClick }) => {
 				</li>
 				<button
 					className='user__btn'
-					onClick={onClick}>
+					onClick={() => navigate('repos')}>
 					Public repositories
 				</button>
 			</ul>
