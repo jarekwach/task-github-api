@@ -1,8 +1,6 @@
 import React from 'react';
 import {
 	Route,
-	Routes,
-	BrowserRouter,
 	createBrowserRouter,
 	createRoutesFromElements,
 	Outlet,
@@ -11,13 +9,12 @@ import {
 import './index.css';
 import GitHubApp from './components/GitHubApp';
 import FindSection from './components/FindSection';
-
 import GithubAPI from './GithubAPI';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Form from './components/Form';
 import UserRepos from './components/UserRepos';
-import UserRepoDetails from './components/UserRepoDetails';
+import RepoDetails from './components/RepoDetails';
 
 const token = process.env.REACT_APP_API_KEY;
 const gh = new GithubAPI(token);
@@ -28,8 +25,8 @@ const Layout = () => {
 			<Header />
 			<FindSection>
 				<Form />
+				<Outlet />
 			</FindSection>
-			<Outlet />
 			<Footer />
 		</>
 	);
@@ -60,7 +57,10 @@ const router = createBrowserRouter(
 				<Route
 					exact
 					path='repos/:id'
-					element={<UserRepoDetails />}></Route>
+					element={<RepoDetails />}
+					loader={async ({ request, params }) => {
+						return gh.getUserRepositories(params.username);
+					}}></Route>
 			</Route>
 		</>
 	)
