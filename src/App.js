@@ -16,6 +16,8 @@ import GithubAPI from './GithubAPI';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Form from './components/Form';
+import UserRepo from './components/UserRepo';
+import UserRepoDetails from './components/UserRepoDetails';
 
 const token = process.env.REACT_APP_API_KEY;
 const gh = new GithubAPI(token);
@@ -46,13 +48,19 @@ const router = createBrowserRouter(
 				path='/user/:username'
 				element={<GitHubApp />}
 				loader={async ({ request, params }) => {
-					console.log(params);
 					return gh.getUserInfo(params.username);
 				}}>
 				<Route
 					exact
 					path='repos'
-					element={<>repos</>}></Route>
+					element={<UserRepo />}
+					loader={async ({ request, params }) => {
+						return gh.getUserRepositories(params.username);
+					}}></Route>
+				<Route
+					exact
+					path='repos/:id'
+					element={<UserRepoDetails />}></Route>
 			</Route>
 		</>
 	)
