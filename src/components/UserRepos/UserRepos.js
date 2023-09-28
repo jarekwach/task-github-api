@@ -3,8 +3,9 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import './UserRepos.css'
 
-const UserRepo = () => {
+const UserRepos = () => {
 	const [inpValue, setInpValue] = useState('');
 	const repositories = useLoaderData();
 	const navigate = useNavigate();
@@ -55,4 +56,4 @@ const UserRepo = () => {
 	);
 };
 
-export default UserRepo;
+export default UserRepos;

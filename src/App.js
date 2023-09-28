@@ -16,7 +16,7 @@ import GithubAPI from './GithubAPI';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Form from './components/Form';
-import UserRepo from './components/UserRepo';
+import UserRepos from './components/UserRepos';
 import UserRepoDetails from './components/UserRepoDetails';
 
 const token = process.env.REACT_APP_API_KEY;
@@ -53,7 +53,7 @@ const router = createBrowserRouter(
 				<Route
 					exact
 					path='repos'
-					element={<UserRepo />}
+					element={<UserRepos />}
 					loader={async ({ request, params }) => {
 						return gh.getUserRepositories(params.username);
 					}}></Route>

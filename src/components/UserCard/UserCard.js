@@ -4,6 +4,8 @@ import { faX } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
+import './UserCard.css'
+
 const UserCard = ({ data }) => {
 	const { name, login, email, type, avatar_url, created_at } = data;
 	const navigate = useNavigate();
