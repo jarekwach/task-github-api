@@ -15,7 +15,7 @@ The personal access token is needed for the proper operation of the application.
 - Enter your personal access token in the `.env.example` file
 
 ```
-REACT_APP_API_KEY=yourPersonalAccessToken
+REACT_APP_ACCESS_TOKEN=yourPersonalAccessToken
 ```
 
 - Rename `.env.example` to `.env`
