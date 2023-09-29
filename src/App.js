@@ -16,8 +16,7 @@ import Form from './components/Form';
 import UserRepos from './components/UserRepos';
 import RepoDetails from './components/RepoDetails';
 
-const token = process.env.REACT_APP_API_KEY;
-const gh = new GithubAPI(token);
+const gh = new GithubAPI();
 
 const Layout = () => {
 	return (

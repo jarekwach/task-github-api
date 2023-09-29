@@ -4,7 +4,7 @@ import './FindSection.css';
 const FindSection = ({ children }) => {
 	return (
 		<section className='find-user'>
-			<div className='find-user__container container'>{children}</div>
+			<div className='find-user__container '>{children}</div>
 		</section>
 	);
 };

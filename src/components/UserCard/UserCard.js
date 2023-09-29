@@ -3,16 +3,20 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { useNavigate } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 
-import './UserCard.css'
+import './UserCard.css';
 
-const UserCard = ({ data }) => {
-	const { name, login, email, type, avatar_url, created_at } = data;
+const UserCard = () => {
 	const navigate = useNavigate();
+	const userInfo = useLoaderData();
+	const { name, login, email, type, avatar_url, created_at } = userInfo;
 
 	return (
 		<div className='user__item'>
-			<a onClick={() => navigate('/')} className='user__close-btn'>
+			<a
+				onClick={() => navigate('/')}
+				className='user__close-btn'>
 				<FontAwesomeIcon
 					icon={faX}
 					className='user__close-ico'
