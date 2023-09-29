@@ -3,7 +3,7 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import './UserRepos.css'
+import './UserRepos.css';
 
 const UserRepos = () => {
 	const [inpValue, setInpValue] = useState('');
@@ -20,7 +20,7 @@ const UserRepos = () => {
 	return (
 		<div className='user__repositories repositories'>
 			<form className='repositories__form'>
-				<label>search repositories: </label>
+				<label>Search repositories: </label>
 				<input
 					type='text'
 					name='searchQuery'
@@ -29,28 +29,36 @@ const UserRepos = () => {
 			</form>
 
 			<ul className='repositories__list'>
-				{filteredRepoList.map((repo) => (
-					<li
-						className='repositories__item'
-						key={repo.id}>
-						<p className='repositories__name'>
-							<button
-								className='repositories__btn'
-								onClick={(e) => navigate(e.target.id)}
-								id={repo.id}>
-								info
-							</button>{' '}
-							{repo.name}
-							{repo.stargazers_count > 0 ? (
-								<span className='repositories__star'>
-									{' '}
-									<FontAwesomeIcon icon={faStar} /> {repo.stargazers_count}
-								</span>
-							) : null}
-						</p>
-						<p className='repositories__description'>{repo.description}</p>
-					</li>
-				))}
+				{filteredRepoList.length > 0 ? (
+					filteredRepoList.map((repo) => {
+						const { id, name, stargazers_count, description } = repo;
+
+						return (
+							<li
+								className='repositories__item'
+								key={id}>
+								<p className='repositories__name'>
+									<button
+										className='repositories__btn'
+										onClick={(e) => navigate(e.target.id)}
+										id={id}>
+										info
+									</button>{' '}
+									{name}
+									{stargazers_count > 0 ? (
+										<span className='repositories__star'>
+											{' '}
+											<FontAwesomeIcon icon={faStar} /> {stargazers_count}
+										</span>
+									) : null}
+								</p>
+								<p className='repositories__description'>{description}</p>
+							</li>
+						);
+					})
+				) : (
+					<p className='repositories__info'>No results</p>
+				)}
 			</ul>
 		</div>
 	);

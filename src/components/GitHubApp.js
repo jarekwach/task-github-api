@@ -8,9 +8,6 @@ import Footer from './Footer';
 import FindSection from './FindSection';
 import Form from './Form';
 
-const token = process.env.REACT_APP_API_KEY;
-const gh = new GithubAPI(token);
-
 const GithubApp = () => {
 	const [error, setError] = useState('');
 	const userInfo = useLoaderData();
@@ -25,25 +22,11 @@ const GithubApp = () => {
 					{userInfo !== '' ? (
 						<UserInfo
 							data={userInfo}
-							// onClick={getUserRepositories}
+
 						/>
 					) : null}
-
-					{/* {repositories.length !== 0 ? (
-						<UserRepo
-							repoList={repositories}
-							onClick={getRepoDetails}
-							onChange={handleInputChange}
-							inpValue={formData.searchQuery}
-						/>
-					) : null} */}
-
-					{/* {currentRepo.length !== 0 ? (
-						<UserRepoDetails data={currentRepo} />
-					) : null} */}
+					<Outlet />
 				</div>
-
-				<Outlet />
 			</FindSection>
 
 			{error && (

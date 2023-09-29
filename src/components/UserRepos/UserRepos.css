@@ -1,3 +1,6 @@
+.repositories {
+	width: 75%;
+}
 .repositories__list {
 	position: relative;
 	margin: 20px;
@@ -13,7 +16,7 @@
 	text-align: center;
 }
 
-.repositories__item {
+.repositories__item:not(:last-child) {
 	margin-bottom: 8px;
 }
 
@@ -43,4 +46,9 @@
 .repositories__btn:hover {
 	color: var(--color-white);
 	background-color: var(--color-hover);
+}
+
+.repositories__info {
+	color: var(--color-white);
+	/* text-align: center; */
 }

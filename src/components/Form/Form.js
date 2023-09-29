@@ -18,6 +18,11 @@ const Form = () => {
 		}
 	};
 
+	const handleChange = (e) => {
+		setInpValue(e.target.value);
+		setError('');
+	};
+
 	return (
 		<>
 			<form
@@ -29,10 +34,7 @@ const Form = () => {
 					type='text'
 					value={inpValue}
 					name='username'
-					onChange={(e) => {
-						setInpValue(e.target.value);
-						setError('');
-					}}
+					onChange={handleChange}
 				/>
 				<input
 					className='form__input form__input--submit'
