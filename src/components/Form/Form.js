@@ -13,6 +13,7 @@ const Form = () => {
 
 		if (inpValue !== '') {
 			navigate(`/user/${inpValue}`);
+			setInpValue('')
 		} else {
 			setError('Please enter username');
 		}
@@ -28,7 +29,7 @@ const Form = () => {
 			<form
 				className='find-user__form form'
 				onSubmit={handleSubmit}>
-				<label className='form__label'>Check user details:</label>
+				<label className='form__label'>Username:</label>
 				<input
 					className='form__input'
 					type='text'

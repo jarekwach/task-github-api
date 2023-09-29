@@ -57,7 +57,7 @@ const UserRepos = () => {
 						);
 					})
 				) : (
-					<p className='repositories__info'>No results</p>
+					<p className='repositories__info'>Not found</p>
 				)}
 			</ul>
 		</div>
