@@ -7,7 +7,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 const Header = () => {
 	return (
 		<header className='header'>
-			<div className='header__container container'>
+			<div className='header__container'>
 				<div className='header__content'>
 					<h1 className='header__title'>hello!</h1>
 					<h2 className='header__name'>I'm Jarek</h2>

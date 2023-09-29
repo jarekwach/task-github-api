@@ -1,16 +1,16 @@
 import React from 'react';
 
-import './Footer.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faAt } from '@fortawesome/free-solid-svg-icons';
+import './Footer.css';
 
 const Footer = () => {
 	const date = new Date();
 
 	return (
 		<footer className='footer'>
-			<div className='footer__container container'>
+			<div className='footer__container'>
 				<p className='footer__info'>
 					&copy; <span className='footer__date'>{date.getFullYear()} </span>
 					GitHubApp - <span className='footer__name'>Jaroslaw Wachala</span>
