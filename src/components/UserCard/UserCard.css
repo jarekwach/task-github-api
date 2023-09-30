@@ -24,21 +24,24 @@
 }
 
 .user__close-btn {
+	padding: 20px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	border: none;
+	background: none;
 	cursor: pointer;
+}
+
+.user__close-ico {
+	transition: all 0.3s;
+	color: var(--color-white);
+	font-size: 18px;
 }
 
 .user__close-btn:hover > .user__close-ico {
 	transform: scale(1.2);
 	color: var(--color-hover);
-}
-
-.user__close-ico {
-	font-size: 18px;
-	padding: 20px;
-	position: absolute;
-	transition: all 0.3s;
-	top: 0;
-	right: 0;
 }
 
 .user__avatar {

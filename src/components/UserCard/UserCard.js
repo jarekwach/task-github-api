@@ -14,14 +14,14 @@ const UserCard = () => {
 
 	return (
 		<div className='user__item'>
-			<a
+			<button
 				onClick={() => navigate('/')}
 				className='user__close-btn'>
 				<FontAwesomeIcon
 					icon={faX}
 					className='user__close-ico'
 				/>
-			</a>
+			</button>
 			<header className='user__header'>
 				<h3 className='user__name'>{name}</h3>
 				<img
