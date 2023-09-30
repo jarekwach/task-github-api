@@ -30,14 +30,19 @@ const GithubAPI = () => {
 		return _fetch({ ...setHeaders() }, `/users/${username}/repos`);
 	};
 
-	const getRepoById = (id) => {
+	const getRepositoryById = (id) => {
 		return _fetch({ ...setHeaders() }, `/repositories/${id}`);
+	};
+
+	const getRepositoryReadme = (username, repoName) => {
+		return _fetch({ ...setHeaders() }, `/repos/${username}/${repoName}/readme`);
 	};
 
 	return {
 		getUserInfo,
 		getUserRepositories,
-		getRepoById,
+		getRepositoryById,
+		getRepositoryReadme,
 	};
 };
 

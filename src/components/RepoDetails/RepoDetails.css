@@ -11,9 +11,23 @@
 	list-style: none;
 }
 
+.repo-details__header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
 .repo-details__name {
 	color: var(--color-white);
-	margin-right: 10px;
+}
+.repo-details__link {
+	text-decoration: none;
+	color: var(--color-white);
+	font-weight: bold;
+}
+
+.repo-details__link:hover {
+	text-decoration: underline;
 }
 
 .repo-details__btn {
@@ -28,4 +42,13 @@
 .repo-details__btn:hover {
 	color: var(--color-white);
 	background-color: var(--color-hover);
+}
+
+.repo-details__readme {
+	max-width: 100%;
+	color: whitesmoke;
+}
+
+.repo-details__ico {
+	color: red;
 }

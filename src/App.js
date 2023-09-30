@@ -24,20 +24,21 @@ const router = createBrowserRouter(
 			<Route
 				path='/user/:username'
 				element={<UserPage />}
-				loader={async ({ request, params }) => {
-					return api.getUserInfo(params.username);
-				}}>
+				loader={async ({ request, params }) =>
+					api.getUserInfo(params.username)
+				}>
 				<Route
 					path='/user/:username/repos'
 					element={<UserRepos />}
-					loader={async ({ request, params }) => 
-						api.getUserRepositories(params.username)}></Route>
+					loader={async ({ request, params }) =>
+						api.getUserRepositories(params.username)
+					}></Route>
 				<Route
 					path='repos/:id'
 					element={<RepoDetails />}
-					loader={async ({ request, params }) => {
-						return api.getRepoById(params.id);
-					}}></Route>
+					loader={async ({ request, params }) =>
+						api.getRepositoryById(params.id)
+					}></Route>
 			</Route>
 		</>
 	)
