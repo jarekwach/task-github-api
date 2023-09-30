@@ -7,17 +7,14 @@ const RepoDetails = () => {
 	const repositories = useLoaderData();
 	const navigate = useNavigate();
 
-	const filteredRepo = repositories.filter((repo) => {
-		return repo.id === parseInt(id);
-	});
-
-	const [currentRepo] = filteredRepo;
-
 	return (
-		<ul>
-			<li>
-				<h3>{currentRepo.name}</h3>
-				<button onClick={() => navigate(-1)}>back</button>
+		<ul className='repo-details'>
+			<li className='repo-details__item'>
+				<button
+					className='repo-details__btn'
+					onClick={() => navigate(-1)}>
+					back
+				</button>
 			</li>
 		</ul>
 	);

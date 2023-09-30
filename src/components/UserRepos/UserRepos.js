@@ -18,46 +18,47 @@ const UserRepos = () => {
 	);
 
 	return (
-		<div className='user__repositories repositories'>
-			<form className='repositories__form'>
+		<div className='user-repos'>
+			<form className='user-repos__form'>
 				<label>Search repositories: </label>
 				<input
+					className='user-repos__input'
 					type='text'
 					name='searchQuery'
 					value={inpValue}
 					onChange={(e) => setInpValue(e.target.value)}></input>
 			</form>
 
-			<ul className='repositories__list'>
+			<ul className='user-repos__list'>
 				{filteredRepoList.length > 0 ? (
 					filteredRepoList.map((repo) => {
 						const { id, name, stargazers_count, description } = repo;
 
 						return (
 							<li
-								className='repositories__item'
+								className='user-repos__item'
 								key={id}>
-								<p className='repositories__name'>
+								<p className='user-repos__name'>
 									<button
-										className='repositories__btn'
+										className='user-repos__btn'
 										onClick={(e) => navigate(e.target.id)}
 										id={id}>
 										info
 									</button>{' '}
 									{name}
 									{stargazers_count > 0 ? (
-										<span className='repositories__star'>
+										<span className='user-repos__star'>
 											{' '}
 											<FontAwesomeIcon icon={faStar} /> {stargazers_count}
 										</span>
 									) : null}
 								</p>
-								<p className='repositories__description'>{description}</p>
+								<p className='user-repos__description'>{description}</p>
 							</li>
 						);
 					})
 				) : (
-					<p className='repositories__info'>Not found</p>
+					<p className='user-repos__info'>Not found</p>
 				)}
 			</ul>
 		</div>

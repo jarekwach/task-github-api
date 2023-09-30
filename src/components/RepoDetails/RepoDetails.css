@@ -1,0 +1,31 @@
+.repo-details {
+	width: 75%;
+	position: relative;
+	margin: 20px;
+	margin-top: 47px;
+	padding: 20px;
+	background-color: #485461;
+	background-image: linear-gradient(315deg, #485461 0%, #28313b 74%);
+	border-radius: 8px;
+	box-shadow: 0 0 15px black;
+	list-style: none;
+}
+
+.repo-details__name {
+	color: var(--color-white);
+	margin-right: 10px;
+}
+
+.repo-details__btn {
+	padding: 3px 6px;
+	margin-right: 8px;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: all 0.3s;
+	border: none;
+}
+
+.repo-details__btn:hover {
+	color: var(--color-white);
+	background-color: var(--color-hover);
+}
