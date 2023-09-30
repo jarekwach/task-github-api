@@ -31,24 +31,46 @@
 }
 
 .repo-details__btn {
-	padding: 3px 6px;
-	margin-right: 8px;
-	border-radius: 8px;
-	cursor: pointer;
 	transition: all 0.3s;
 	border: none;
-}
-
-.repo-details__btn:hover {
+	cursor: pointer;
 	color: var(--color-white);
-	background-color: var(--color-hover);
 }
 
+.repo-details__ico {
+	font-size: 18px;
+	padding: 20px;
+	position: absolute;
+	transition: all 0.3s;
+	top: 0;
+	right: 0;
+}
+
+.repo-details__btn:hover > .repo-details__ico {
+	transform: scale(1.2);
+	color: var(--color-hover);
+}
+
+/* markdown */
 .repo-details__readme {
 	max-width: 100%;
 	color: whitesmoke;
 }
 
-.repo-details__ico {
-	color: red;
+.repo-details__readme ul {
+	padding-left: 20px;
+}
+
+.repo-details__readme ul, ol {
+	padding-left: 20px;
+}
+
+.repo-details__readme a {
+	text-decoration: none;
+	color: rgb(214, 104, 97);
+	cursor: pointer;
+}
+
+.repo-details__readme a:hover {
+	text-decoration: underline;
 }

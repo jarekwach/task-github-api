@@ -41,7 +41,7 @@
 	font-size: 13px;
 }
 
-.user-repos__btn {
+.user-repos__info-btn {
 	padding: 3px 6px;
 	margin-right: 8px;
 	border-radius: 8px;
@@ -50,9 +50,29 @@
 	border: none;
 }
 
-.user-repos__btn:hover {
+.user-repos__info-btn:hover {
 	color: var(--color-white);
 	background-color: var(--color-hover);
+}
+
+.user-repos__close-btn {
+	transition: all 0.3s;
+	border: none;
+	cursor: pointer;
+	color: var(--color-white);
+}
+
+.user-repos__close-ico {
+	font-size: 18px;
+	padding: 20px;
+	position: absolute;
+	transition: all 0.3s;
+	top: 0;
+	right: 0;
+}
+.user-repos__close-btn:hover > .user-repos__close-ico {
+	transform: scale(1.2);
+	color: var(--color-hover);
 }
 
 .user-repos__info {

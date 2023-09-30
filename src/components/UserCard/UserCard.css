@@ -33,6 +33,7 @@
 }
 
 .user__close-ico {
+	font-size: 18px;
 	padding: 20px;
 	position: absolute;
 	transition: all 0.3s;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
-import Markdown from 'react-markdown';
 import { useNavigate, useLoaderData } from 'react-router-dom';
+import Markdown from 'react-markdown';
 
 import { GithubAPI } from '../../providers/GithubAPI';
 import { decodedBase64 } from '../../helpers/decodedBase64';
@@ -54,6 +54,7 @@ const RepoDetails = () => {
 						/>
 					</button>
 				</header>
+
 				<div className='repo-details__readme'>
 					{readme && <Markdown>{readme}</Markdown>}
 				</div>

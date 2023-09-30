@@ -27,7 +27,7 @@ const GithubAPI = () => {
 	};
 
 	const getUserRepositories = (username) => {
-		return _fetch({ ...setHeaders() }, `/users/${username}/repos`);
+		return _fetch({ ...setHeaders() }, `/users/${username}/repos?sort=updated`);
 	};
 
 	const getRepositoryById = (id) => {
