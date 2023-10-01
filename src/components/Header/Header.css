@@ -15,27 +15,11 @@
 	justify-content: space-between;
 }
 
-.header__content {
-	margin: 50px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	height: 160px;
-	justify-content: space-evenly;
-}
-
 .header__title {
-	font-size: 40px;
-	font-weight: 300;
-}
-
-.header__name {
+	margin-top: 120px;
+	margin-left: 80px;
 	font-size: 48px;
-	font-weight: bold;
-}
-
-.header__info {
-	font-size: 36px;
+	font-weight: 300;
 	font-weight: bold;
 	color: var(--color-dark);
 	text-shadow: 0 0 7px var(--color-white);
