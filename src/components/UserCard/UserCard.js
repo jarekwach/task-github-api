@@ -11,6 +11,7 @@ const UserCard = () => {
 	const navigate = useNavigate();
 	const userInfo = useLoaderData();
 	const { name, login, email, type, avatar_url, created_at } = userInfo;
+	
 
 	return (
 		<div className='user__item'>

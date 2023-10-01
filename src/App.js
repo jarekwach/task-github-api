@@ -10,6 +10,7 @@ import Layout from './pages/Layout';
 import UserPage from './pages/UserPage';
 import UserRepos from './components/UserRepos';
 import RepoDetails from './components/RepoDetails';
+import NotFound from './pages/NotFound';
 
 import { GithubAPI } from './providers/GithubAPI';
 const api = GithubAPI();
@@ -20,24 +21,24 @@ const router = createBrowserRouter(
 			<Route
 				path='/'
 				element={<Layout />}
+				errorElement={<NotFound />}
 			/>
 			<Route
 				path='/user/:username'
 				element={<UserPage />}
-				loader={async ({ request, params }) =>
-					api.getUserInfo(params.username)
-				}>
+				loader={async ({ params }) => await api.getUserInfo(params.username)}
+				errorElement={<NotFound />}>
 				<Route
 					path='/user/:username/repos'
 					element={<UserRepos />}
-					loader={async ({ request, params }) =>
-						api.getUserRepositories(params.username)
+					loader={async ({ params }) =>
+						await api.getUserRepositories(params.username)
 					}></Route>
 				<Route
 					path='repos/:id'
 					element={<RepoDetails />}
-					loader={async ({ request, params }) =>
-						api.getRepositoryById(params.id)
+					loader={async ({ params }) =>
+						await api.getRepositoryById(params.id)
 					}></Route>
 			</Route>
 		</>

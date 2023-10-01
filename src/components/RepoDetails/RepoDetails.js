@@ -4,10 +4,11 @@ import { useNavigate, useLoaderData } from 'react-router-dom';
 import Markdown from 'react-markdown';
 
 import { GithubAPI } from '../../providers/GithubAPI';
-import { decodedBase64 } from '../../helpers/decodedBase64';
+import { decodeBase64 } from '../../helpers/decodeBase64';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faX } from '@fortawesome/free-solid-svg-icons';
+import { faX, faLink } from '@fortawesome/free-solid-svg-icons';
+
 import './RepoDetails.css';
 
 const RepoDetails = () => {
@@ -26,7 +27,7 @@ const RepoDetails = () => {
 		if (repository) {
 			api.getRepositoryReadme(login, name).then((resp) => {
 				const encodedReadme = resp.content;
-				const decodedReadme = decodedBase64(encodedReadme);
+				const decodedReadme = decodeBase64(encodedReadme);
 
 				setReadme(decodedReadme);
 			});
@@ -38,10 +39,11 @@ const RepoDetails = () => {
 			<li className='repo-details__item'>
 				<header className='repo-details__header'>
 					<p className='repo-details__name'>
-						Repository on Github:{' '}
+						Repository on Github: {' '}
 						<a
 							className='repo-details__link'
 							href={html_url}>
+							<FontAwesomeIcon icon={faLink} />
 							{name}
 						</a>
 					</p>

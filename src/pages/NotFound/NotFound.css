@@ -1,24 +1,28 @@
-.form {
-	padding-top: 20px;
+.not-found {
+	height: calc(60vh - 60px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-top: 10%;
 }
 
-.form__input {
+.not-found__title {
+	margin-bottom: 20px;
+}
+
+.not-found__btn {
 	margin: 0 5px;
 	padding: 5px;
 	border: none;
 	border-radius: 8px;
-	border: 1px solid black;
-}
-
-.form__input--submit {
 	background-color: #303944;
 	color: white;
 	padding: 8px 30px;
-	border: none;
 	box-shadow: 0 0 8px black;
 	transition: all 0.3s;
 	cursor: pointer;
 }
-.form__input--submit:hover {
+
+.not-found__btn:hover {
 	background-color: var(--color-hover);
 }
