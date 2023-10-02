@@ -1,5 +1,7 @@
 # GitHubApp
 
+See the live version of [GitHubApp](https://jarekwach.github.io/task-github-api/).
+
 &nbsp;
 
 ## :gear: Installation
